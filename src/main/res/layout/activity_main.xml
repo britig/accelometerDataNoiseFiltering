@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.briti.filternoise.MainActivity">
+
+    <LinearLayout
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-27dp">
+
+        <TextView
+            android:id="@+id/grapht1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:text="Accelerometer data without filtering"
+            android:textStyle="italic"/>
+
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:paddingTop="10dip"
+            android:id="@+id/graph" />
+
+        <TextView
+            android:id="@+id/grapht2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10dp"
+            android:paddingTop="10dip"
+            android:text="Accelerometer data with filtering"
+            android:textStyle="italic"/>
+
+        <com.jjoe64.graphview.GraphView
+            android:layout_width="match_parent"
+            android:layout_height="200dip"
+            android:paddingTop="10dip"
+            android:id="@+id/graph2" />
+
+
+
+        <TableLayout
+            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:paddingTop="30dip"
+            android:stretchColumns="*"
+            >
+            <TableRow>
+                <Button
+                    android:id="@+id/button1"
+                    android:onClick="onStartClick"
+                    android:text="START"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"/>
+                <Button
+                    android:id="@+id/button2"
+                    android:onClick="onStopClick"
+                    android:text="STOP"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp"/>
+            </TableRow>
+        </TableLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
