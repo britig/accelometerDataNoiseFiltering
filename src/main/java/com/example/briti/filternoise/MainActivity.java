@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onStopClick(View view){
         double yValue =5d;
         manager.unregisterListener((SensorEventListener)this);
-        Log.w("LOG", "inside");
+        //Log.w("LOG", "inside");
         SGFilter sgfilt = new SGFilter(0,31);
         index=0;
         float smoothData[] = sgfilt.smooth(data,coefficients);
