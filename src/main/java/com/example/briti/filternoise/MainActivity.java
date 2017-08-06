@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private double lastXValue = 5d;
     //Variable to store appended data points
     float data[] = new float[500];
-    double lxvalues[] = new double[500];
+    double timestamps[] = new double[500];
     double coefficients[];
-    int index = 0;
+    static int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +116,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             mSeries.appendData(new DataPoint(lastXValue,normalizedValue), true, 500);
             while(index < 500) {
                 data[index] = normalizedValue;
+                timestamps[index] = lastXValue;
                 index++;
+                break;
             }
         }
     }
@@ -138,8 +140,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         index=0;
         float smoothData[] = sgfilt.smooth(data,coefficients);
         for(int i=0;i<500;i++){
-            yValue+=1d;
-            mSeries2.appendData(new DataPoint(yValue,smoothData[i]), true, 500);
+            if(timestamps[i]!=0) {
+                mSeries2.appendData(new DataPoint(timestamps[i], smoothData[i]), true, 500);
+            }else{
+                break;
+            }
         }
 
     }
